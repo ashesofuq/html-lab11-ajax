@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script>
+        var xmlHttp;
+        function send(){
+            xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = showResult;
+
+            var keyword = document.getElementById("keyword").value;
+            var url = "lab-ajax-search.php?keyword=" + keyword;
+            xmlHttp.open("GET", url);
+            xmlHttp.send();
+        }
+
+        function showResult(){
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                document.getElementById("result").innerHTML = xmlHttp.responseText;
+            }
+        }
+    </script>
+</head>
+<body>    
+    <input type="text" id="keyword" onkeyup="send()">    
+    
+    <div id="result">
+
+    </div>
+
+    
+    
+</body>
+</html>
